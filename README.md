@@ -1,106 +1,63 @@
-# 🏡 House Price Predictor
+# SecureGate: AI Input/Output Guardrail Layer
 
-A Streamlit web application that predicts house prices using a **Multiple Linear Regression (MLR)** machine learning model.
+SecureGate is an open-source, dual-layer security gateway built to protect Large Language Models (LLMs) from malicious prompts and sensitive data exfiltration. Powered by Streamlit and Anthropic's Claude, it intercepts user inputs and model outputs in real time to enforce strict safety boundaries.
 
-## 📌 Features
+## 🏗️ Architecture & Data Flow
 
-- Predicts house prices instantly
-- Uses real-world housing data
-- Interactive user interface with Streamlit
-- Includes model evaluation metrics
-- Supports categorical and numerical features
+```text
+User Input
+    │
+    ├─► [Layer 1] Regex Engine  ──►  30+ curated patterns
+    │         Severity: CRITICAL / HIGH / MEDIUM
+    │
+    ├─► [Layer 2] LLM Classifier  ──►  Claude as Judge
+    │         Returns: threat bool, category, confidence, reason
+    │
+    ▼
+Combined Verdict: BLOCK | WARN | PASS
+    │
+    ├─► PASS  ─►  Downstream LLM (Safe system prompt)
+    │                 │
+    │                 ▼
+    │            Output Scanned (Same 2 layers)
+    │
+    └─► BLOCK ─►  Request suppressed + Audit logged
+```
 
----
+## 🛡️ Threat Categories Covered
 
-## 📂 Dataset
+SecureGate evaluates traffic against specific security risks:
+* **Prompt Injection:** Intentional system overrides (e.g., *"Ignore all previous instructions..."*).
+* **Jailbreak:** Roleplay exploits and safety filter bypasses (e.g., DAN attacks).
+* **DB/Log Exfiltration:** SQL injections and connection string leaks (e.g., `SELECT * FROM`).
+* **Secret Probing:** Accidental or malicious exposure of API keys, passwords, and tokens.
+* **Encoded Payloads:** Obfuscated attacks using Base64 blobs, `eval()`, or `exec()`.
+* **Output Leaks:** System instruction disclosure or raw database responses in the final output.
 
-Dataset used in this project:
-
-`data.csv`
-
-Features include:
-- Bedrooms
-- Bathrooms
-- Living Area
-- Lot Area
-- Floors
-- Waterfront
-- View
-- Condition
-- Year Built
-- City
-- State Zip
-and more.
-
----
-
-## ⚙️ Installation
+## 🚀 Quick Start
 
 ### 1. Clone the Repository
-
 ```bash
-git clone https://github.com/your-username/house-price-predictor.git
-cd house-price-predictor
+git clone https://github.com
+cd SecureGate
 ```
 
 ### 2. Install Dependencies
-
 ```bash
-pip install -r requirements.txt
+pip install streamlit anthropic
 ```
 
-### 3. Run the Streamlit App
-
+### 3. Run the Application
 ```bash
-streamlit run app.py
+streamlit run security_guardrail_app.py
 ```
 
----
+## ⚙️ How to Use
 
-## 📊 Machine Learning Model
-
-This project uses:
-
-- **Multiple Linear Regression**
-- Scikit-learn Pipeline
-- OneHotEncoder for categorical variables
-- Train/Test Split for evaluation
-
-### Evaluation Metrics
-- Mean Absolute Error (MAE)
-- R² Score
-
----
-
-## 🚀 How This Project Helps Users
-
-- Enables buyers to estimate fair property prices
-- Assists sellers in setting competitive prices
-- Helps real estate agents make data-driven recommendations
-- Saves time with instant predictions
-- Improves transparency in property valuation
-
----
-
-## 🛠️ Tech Stack
-
-- Python
-- Streamlit
-- Pandas
-- NumPy
-- Scikit-learn
-
----
-
-## 📸 Future Improvements
-
-- Add advanced ML models (Random Forest, XGBoost)
-- Deploy on Streamlit Cloud
-- Add visual analytics and charts
-- Improve feature engineering
-
----
-
-## 👨‍💻 Author
-
-Built as a Machine Learning + Streamlit project.
+1. Launch the app in your browser (typically `http://localhost:8501`).
+2. Input your **Anthropic API Key** into the secure sidebar field.
+3. Navigate the four operational tabs:
+   * **Dashboard / Architecture:** View real-time pipeline visualization.
+   * **Threat Tester:** Validate the engine instantly using **9 preset attack payloads** (including benign baselines) to test layers in isolation.
+   * **Live Sandbox:** Test your own custom prompt attacks and view the bidirectional scanning logs.
+   * **Audit Logs:** Inspect suppressed blocks, classification confidence levels, and mitigation reasons.
