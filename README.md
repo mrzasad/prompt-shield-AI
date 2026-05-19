@@ -65,5 +65,9 @@ streamlit run security_guardrail_app.py
 
 
 
-<img width="1798" height="668" alt="Screenshot 2026-05-18 212731" src="https://github.com/user-attachments/assets/1ff6b6a8-c6e1-4782-b961-c0e9a87add93" />
+<img width="1461" height="658" alt="Screenshot 2026-05-18 213944" src="https://github.com/user-attachments/assets/8e9b504c-304d-4356-84e8-b9417b0a797c" />
+<img width="1798" height="668" alt="Screenshot 2026-05-18 212731" src="https://github.com/user-attachments/assets/da10ba8f-0afe-4943-a9a3-30455f8cd550" />
+<img width="1427" height="851" alt="Screenshot 2026-05-18 214303" src="https://github.com/user-attachments/assets/2608288a-09d3-4e99-8293-65a4be6e3f4b" />
+<img width="1483" height="825" alt="Screenshot 2026-05-18 214239" src="https://github.com/user-attachments/assets/e5853b29-5537-4885-a0d5-73be15dfbb6e" />
+
 
