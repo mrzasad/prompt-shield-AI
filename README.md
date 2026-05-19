@@ -61,3 +61,9 @@ streamlit run security_guardrail_app.py
    * **Threat Tester:** Validate the engine instantly using **9 preset attack payloads** (including benign baselines) to test layers in isolation.
    * **Live Sandbox:** Test your own custom prompt attacks and view the bidirectional scanning logs.
    * **Audit Logs:** Inspect suppressed blocks, classification confidence levels, and mitigation reasons.
+  
+
+
+
+<img width="1798" height="668" alt="Screenshot 2026-05-18 212731" src="https://github.com/user-attachments/assets/1ff6b6a8-c6e1-4782-b961-c0e9a87add93" />
+
